@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishabh Raj | Full Stack Developer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Theme (Default) */
+            --color-bg: #f8fafc; /* slate-50 */
+            --color-text-primary: #020617; /* slate-950 */
+            --color-text-secondary: #334155; /* slate-700 */
+            --color-accent: #0ea5e9; /* sky-500 */
+            --color-accent-text-light: #ffffff; /* for buttons */
+            --color-card-bg: rgba(255, 255, 255, 0.7);
+            --color-border: rgba(0, 0, 0, 0.1);
+            --color-tag-bg: #e0f2fe; /* sky-100 */
+            --color-tag-text: #0369a1; /* sky-700 */
+            --color-header-text: #0f172a;
+            --color-icon: #475569; /* slate-600 */
+            --color-icon-hover: #0ea5e9;
+            --color-button-secondary-bg: #e2e8f0; /* slate-200 */
+            --color-button-secondary-text: #1e293b; /* slate-800 */
+            --color-button-secondary-hover-bg: #cbd5e1; /* slate-300 */
+            --color-footer-text: #475569; /* slate-600 */
+        }
+
+        html.dark {
+            /* Dark Theme */
+            --color-bg: #0f172a;
+            --color-text-primary: #e2e8f0;
+            --color-text-secondary: #94a3b8; /* slate-400 */
+            --color-accent: #38bdf8; /* sky-400 */
+            --color-accent-text-light: #0f172a; /* for buttons */
+            --color-card-bg: rgba(30, 41, 59, 0.5);
+            --color-border: rgba(255, 255, 255, 0.1);
+            --color-tag-bg: rgba(56, 189, 248, 0.15);
+            --color-tag-text: #7dd3fc; /* sky-300 */
+            --color-header-text: #e2e8f0;
+            --color-icon: #94a3b8; /* slate-400 */
+            --color-icon-hover: #38bdf8;
+            --color-button-secondary-bg: #334155; /* slate-700 */
+            --color-button-secondary-text: #e2e8f0; /* slate-200 */
+            --color-button-secondary-hover-bg: #475569; /* slate-600 */
+            --color-footer-text: #64748b; /* slate-500 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .glass-effect {
+            background: var(--color-card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--color-border);
+        }
+        .accent-color {
+            color: var(--color-accent);
+        }
+        .accent-bg {
+            background-color: var(--color-accent);
+            color: var(--color-accent-text-light);
+        }
+        .accent-bg:hover {
+            filter: brightness(1.1);
+        }
+        .text-secondary {
+            color: var(--color-text-secondary);
+        }
+        header a, header .font-bold {
+            color: var(--color-header-text);
+        }
+        .section-heading {
+            @apply text-3xl md:text-4xl font-bold text-center mb-16 tracking-tight;
+            color: var(--color-accent);
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .typed-cursor {
+            color: var(--color-accent);
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .animated-gradient {
+            background: linear-gradient(90deg, #38bdf8, #a78bfa, #ec4899, #38bdf8);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-animation 5s ease infinite;
+        }
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .interactive-glow:hover {
+             box-shadow: 0 0 15px rgba(56, 189, 248, 0.4), 0 0 5px rgba(56, 189, 248, 0.3);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="fixed w-full top-0 z-50 glass-effect transition-all duration-300" id="header">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tight">Rishabh Raj</a>
+            <div class="flex items-center">
+                <nav class="hidden md:flex space-x-8 text-sm font-medium items-center">
+                    <a href="#about" class="hover:accent-color transition-colors duration-300">About</a>
+                    <a href="#skills" class="hover:accent-color transition-colors duration-300">Skills</a>
+                    <a href="#projects" class="hover:accent-color transition-colors duration-300">Projects</a>
+                    <a href="#responsibilities" class="hover:accent-color transition-colors duration-300">Responsibilities</a>
+                    <a href="#contact" class="hover:accent-color transition-colors duration-300">Contact</a>
+                </nav>
+                <button id="theme-toggle" type="button" class="ml-6 text-sm p-2.5 rounded-lg" style="color: var(--color-icon); background-color: var(--color-button-secondary-bg);" onmouseover="this.style.backgroundColor= 'var(--color-button-secondary-hover-bg)'" onmouseout="this.style.backgroundColor= 'var(--color-button-secondary-bg)'">
+                    <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500 ml-2">
+                    <svg id="menu-open-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <svg id="menu-close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+             <a href="#about" class="block py-2 hover:accent-color transition-colors duration-300">About</a>
+             <a href="#skills" class="block py-2 hover:accent-color transition-colors duration-300">Skills</a>
+             <a href="#projects" class="block py-2 hover:accent-color transition-colors duration-300">Projects</a>
+             <a href="#responsibilities" class="block py-2 hover:accent-color transition-colors duration-300">Responsibilities</a>
+             <a href="#contact" class="block py-2 hover:accent-color transition-colors duration-300">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-24 md:pt-32">
+        <!-- Hero Section -->
+        <section id="hero" class="text-center min-h-[70vh] flex flex-col items-center justify-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+                Hi, I'm <span class="animated-gradient">Rishabh Raj</span>
+            </h1>
+            <div class="text-xl md:text-2xl text-secondary mb-8 h-8 md:h-14">
+                <span id="typed-text"></span>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#contact" class="inline-block accent-bg font-bold py-3 px-8 rounded-lg text-lg transition-transform duration-300 shadow-lg hover:scale-105 interactive-glow">
+                    Contact Me
+                </a>
+                <a href="resume rishabh.pdf" download="Rishabh_Raj_Resume.pdf" class="inline-flex items-center justify-center font-bold py-3 px-8 rounded-lg text-lg transition-transform duration-300 shadow-lg hover:scale-105 interactive-glow" style="background-color: var(--color-button-secondary-bg); color: var(--color-button-secondary-text);" onmouseover="this.style.backgroundColor='var(--color-button-secondary-hover-bg)'" onmouseout="this.style.backgroundColor='var(--color-button-secondary-bg)'">
+                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Download Resume
+                </a>
+            </div>
+            <div class="flex justify-center items-center space-x-6 mt-12">
+                <a href="https://github.com/rishu951935" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:scale-110" style="color: var(--color-icon);" onmouseover="this.style.color='var(--color-icon-hover)'" onmouseout="this.style.color='var(--color-icon)'">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/rishabh-r-98684412b/" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:scale-110" style="color: var(--color-icon);" onmouseover="this.style.color='var(--color-icon-hover)'" onmouseout="this.style.color='var(--color-icon)'">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                </a>
+                <a href="mailto:rishabhrajkvs@gmail.com" class="transition-transform duration-300 hover:scale-110" style="color: var(--color-icon);" onmouseover="this.style.color='var(--color-icon-hover)'" onmouseout="this.style.color='var(--color-icon)'">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-24 fade-in-section">
+            <h2 class="section-heading">About Me</h2>
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-2/3">
+                    <p class="text-lg text-secondary leading-relaxed">
+                        I am a passionate Full Stack Developer with a foundation in Electronics and Communication Engineering from MMMUT, Gorakhpur. My expertise lies in building dynamic and user-friendly web applications and exploring the realms of Data Science and Machine Learning.
+                    </p>
+                    <p class="mt-4 text-lg text-secondary leading-relaxed">
+                        I thrive on solving complex problems, whether it's developing robust software, optimizing systems with predictive analytics, or collaborating in a team environment. I am continuously learning new technologies to create efficient, scalable, and intelligent solutions.
+                    </p>
+                </div>
+                 <div class="w-full md:w-1/3 flex justify-center">
+                    <div class="relative w-48 h-48 md:w-64 md:h-64">
+                         <div class="absolute inset-0 rounded-full accent-bg transform -rotate-6"></div>
+                         <img src="WhatsApp Image 2025-09-02 at 03.41.30_da96153e.jpg" alt="Rishabh Raj" class="relative rounded-full w-full h-full object-cover border-4 shadow-lg" style="border-color: var(--color-bg);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24 fade-in-section">
+            <h2 class="section-heading">Technical Skills</h2>
+            <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div class="glass-effect p-6 rounded-lg hover:scale-105 transition-all duration-300 interactive-glow">
+                    <h3 class="text-xl font-semibold mb-4 accent-color">Programming</h3>
+                    <ul class="space-y-2 text-secondary">
+                        <li>Python</li>
+                        <li>C++ / DSA</li>
+                        <li>JavaScript</li>
+                        <li>SQL</li>
+                        <li>HTML & CSS</li>
+                    </ul>
+                </div>
+                <div class="glass-effect p-6 rounded-lg hover:scale-105 transition-all duration-300 interactive-glow">
+                    <h3 class="text-xl font-semibold mb-4 accent-color">Data Science & ML</h3>
+                     <ul class="space-y-2 text-secondary">
+                        <li>Pandas, NumPy</li>
+                        <li>Scikit-learn</li>
+                        <li>TensorFlow, Keras</li>
+                        <li>Jupyter Notebooks</li>
+                        <li>MATLAB</li>
+                    </ul>
+                </div>
+                <div class="glass-effect p-6 rounded-lg hover:scale-105 transition-all duration-300 interactive-glow">
+                    <h3 class="text-xl font-semibold mb-4 accent-color">Developer Tools</h3>
+                     <ul class="space-y-2 text-secondary">
+                        <li>Git, VS Code, PyCharm</li>
+                        <li>React</li>
+                        <li>MULTISIM, Arduino</li>
+                        <li>Agile, Scrum</li>
+                    </ul>
+                </div>
+                <div class="glass-effect p-6 rounded-lg hover:scale-105 transition-all duration-300 interactive-glow">
+                    <h3 class="text-xl font-semibold mb-4 accent-color">Cloud Platforms</h3>
+                    <ul class="space-y-2 text-secondary">
+                        <li>Amazon Web Services (AWS)</li>
+                        <li>Microsoft Azure</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 fade-in-section">
+            <h2 class="section-heading">Featured Projects</h2>
+            <div class="max-w-5xl mx-auto grid md:grid-cols-1 lg:grid-cols-2 gap-10">
+                
+                <div class="glass-effect rounded-lg overflow-hidden flex flex-col group transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-sky-900/50 interactive-glow">
+                    <img src="https://placehold.co/600x400/1E293B/38BDF8?text=Predictive+Maintenance" alt="Predictive Maintenance Project" class="object-cover w-full h-56 group-hover:opacity-90 transition-opacity">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                           <h3 class="text-2xl font-bold accent-color mb-2">Predictive Maintenance</h3>
+                           <p class="text-secondary mb-4 leading-relaxed">
+                                Developed a system to predict equipment failures by analyzing sensor data with machine learning, aiming to reduce downtime and maintenance costs.
+                           </p>
+                           <div class="flex flex-wrap gap-2 mb-6">
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">Python</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">Scikit-learn</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">SQL</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">AWS</span>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-effect rounded-lg overflow-hidden flex flex-col group transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-sky-900/50 interactive-glow">
+                    <img src="https://placehold.co/600x400/1E293B/38BDF8?text=HVAC+Optimization" alt="HVAC Energy Optimization Project" class="object-cover w-full h-56 group-hover:opacity-90 transition-opacity">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                           <h3 class="text-2xl font-bold accent-color mb-2">HVAC Energy Optimization</h3>
+                           <p class="text-secondary mb-4 leading-relaxed">
+                                Utilized predictive analytics and deep learning models to optimize HVAC energy consumption, leading to significant energy savings.
+                           </p>
+                           <div class="flex flex-wrap gap-2 mb-6">
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">Python</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">TensorFlow</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">MATLAB</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">AWS</span>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-effect rounded-lg overflow-hidden flex flex-col group transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-sky-900/50 interactive-glow">
+                    <img src="https://placehold.co/600x400/1E293B/38BDF8?text=Smart+Manufacturing" alt="Smart Manufacturing Project" class="object-cover w-full h-56 group-hover:opacity-90 transition-opacity">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                           <h3 class="text-2xl font-bold accent-color mb-2">Smart Manufacturing with IoT & ML</h3>
+                           <p class="text-secondary mb-4 leading-relaxed">
+                                Designed an IoT-based system using Raspberry Pi to monitor and optimize manufacturing processes in real-time with machine learning models.
+                           </p>
+                           <div class="flex flex-wrap gap-2 mb-6">
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">Python</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">Raspberry Pi</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">TensorFlow</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">AWS</span>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-effect rounded-lg overflow-hidden flex flex-col group transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-sky-900/50 interactive-glow">
+                    <img src="https://placehold.co/600x400/1E293B/38BDF8?text=Structural+Monitoring" alt="Structural Health Monitoring" class="object-cover w-full h-56 group-hover:opacity-90 transition-opacity">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                           <h3 class="text-2xl font-bold accent-color mb-2">Structural Health Monitoring</h3>
+                           <p class="text-secondary mb-4 leading-relaxed">
+                                Implemented a system to monitor structural health using sensor data and machine learning to predict potential failures in infrastructure.
+                           </p>
+                           <div class="flex flex-wrap gap-2 mb-6">
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">Python</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">MATLAB</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">ANSYS</span>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-effect rounded-lg overflow-hidden flex flex-col group transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-sky-900/50 interactive-glow">
+                    <img src="https://placehold.co/600x400/1E293B/38BDF8?text=NSS+Website" alt="NSS Website Project" class="object-cover w-full h-56 group-hover:opacity-90 transition-opacity">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                           <h3 class="text-2xl font-bold accent-color mb-2">NSS Official Website</h3>
+                           <p class="text-secondary mb-4 leading-relaxed">
+                                A full-stack web application for the National Service Scheme (NSS) featuring Razorpay integration for payments and backed by Supabase for auth and database.
+                           </p>
+                           <div class="flex flex-wrap gap-2 mb-6">
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">TypeScript</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">React</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">Vite</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">Supabase</span>
+                               <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background-color: var(--color-tag-bg); color: var(--color-tag-text);">Razorpay</span>
+                           </div>
+                        </div>
+                         <div class="mt-auto">
+                           <a href="https://github.com/rishu951935/NSS-WEBSITE.git" target="_blank" rel="noopener noreferrer" class="inline-flex items-center font-medium accent-color hover:text-sky-300 transition-colors duration-300">
+                               View on GitHub
+                               <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                           </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+         <!-- Positions of Responsibility Section -->
+        <section id="responsibilities" class="py-24 fade-in-section">
+            <h2 class="section-heading">Leadership & Responsibilities</h2>
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+                <div class="glass-effect p-6 rounded-lg hover:-translate-y-2 transition-transform duration-300 interactive-glow">
+                    <h3 class="text-xl font-bold mb-4 accent-color">National Service Scheme (NSS)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-secondary">
+                        <li><span class="font-semibold" style="color: var(--color-text-primary);">Secretary:</span> Led teams for organizing events and workshops.</li>
+                        <li>Managed the official NSS website and its technical infrastructure.</li>
+                    </ul>
+                </div>
+                 <div class="glass-effect p-6 rounded-lg hover:-translate-y-2 transition-transform duration-300 interactive-glow">
+                    <h3 class="text-xl font-bold mb-4 accent-color">Electronics and Communication Engineering Society (ECES)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-secondary">
+                        <li><span class="font-semibold" style="color: var(--color-text-primary);">Co-Editor:</span> Led the society for various events and workshops.</li>
+                        <li>Handled audio-visual setups and overall event logistics.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 text-center fade-in-section">
+            <h2 class="section-heading">Get In Touch</h2>
+            <p class="max-w-2xl mx-auto text-lg text-secondary mb-8">
+                I'm currently open to new opportunities and collaborations. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            </p>
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="max-w-xl mx-auto">
+                <input type="hidden" name="access_key" value="d6173113-7cce-4315-9b1e-294bd666286c"> 
+                <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio">
+                <input type="hidden" name="from_name" value="Portfolio Site">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                    <input type="text" name="name" placeholder="Your Name" required class="w-full rounded-lg p-3 focus:outline-none focus:ring-2 transition-all" style="background-color:var(--color-button-secondary-bg); border: 1px solid var(--color-border); color: var(--color-text-primary);">
+                    <input type="email" name="email" placeholder="Your Email" required class="w-full rounded-lg p-3 focus:outline-none focus:ring-2 transition-all" style="background-color:var(--color-button-secondary-bg); border: 1px solid var(--color-border); color: var(--color-text-primary);">
+                </div>
+                <textarea name="message" placeholder="Your Message" rows="5" required class="w-full rounded-lg p-3 mb-6 focus:outline-none focus:ring-2 transition-all" style="background-color:var(--color-button-secondary-bg); border: 1px solid var(--color-border); color: var(--color-text-primary);"></textarea>
+                <button type="submit" id="submit-button" class="w-full sm:w-auto accent-bg font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Send Message
+                </button>
+                <p id="form-status" class="mt-4 text-sm"></p>
+            </form>
+        </section>
+
+    </main>
+    
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 bg-sky-500/50 text-white w-12 h-12 rounded-full hidden justify-center items-center backdrop-blur-sm hover:bg-sky-500 transition-all duration-300 z-50">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+    </button>
+
+    <!-- Footer -->
+    <footer class="border-t" style="border-color: var(--color-border);">
+        <div class="container mx-auto px-6 py-6 text-center" style="color: var(--color-footer-text);">
+            <p>&copy; 2025 Rishabh Raj. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Typed.js for dynamic text ---
+            new Typed('#typed-text', {
+                strings: ['A Full Stack Developer.', 'A Data Science Enthusiast.', 'An Electronics Engineer.', 'A Lifelong Learner.'],
+                typeSpeed: 50,
+                backSpeed: 25,
+                backDelay: 1500,
+                loop: true
+            });
+
+            // --- Mobile menu toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuOpenIcon.classList.toggle('hidden');
+                menuCloseIcon.classList.toggle('hidden');
+            });
+            
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a[href^="#"]');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuOpenIcon.classList.remove('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                });
+            });
+
+            // --- Header style on scroll ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('py-2');
+                    header.classList.remove('py-4');
+                } else {
+                    header.classList.add('py-4');
+                    header.classList.remove('py-2');
+                }
+            });
+
+            // --- Fade-in animation on scroll ---
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // --- Scroll to Top button ---
+            const scrollToTopBtn = document.getElementById('scroll-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.style.display = 'flex';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            });
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // --- Contact Form Submission ---
+            const form = document.getElementById('contact-form');
+            const submitButton = document.getElementById('submit-button');
+            const formStatus = document.getElementById('form-status');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const accessKey = formData.get("access_key");
+                
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+                formStatus.textContent = '';
+                formStatus.className = 'mt-4 text-sm';
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                    });
+                    
+                    const result = await response.json();
+
+                    if (result.success) {
+                        formStatus.textContent = "Thank you! Your message has been sent successfully.";
+                        formStatus.className = 'mt-4 text-sm text-green-400';
+                        form.reset();
+                    } else {
+                        formStatus.textContent = result.message || "Oops! Something went wrong.";
+                        formStatus.className = 'mt-4 text-sm text-red-400';
+                    }
+                } catch (error) {
+                    formStatus.textContent = "Oops! There was a problem submitting your form.";
+                    formStatus.className = 'mt-4 text-sm text-red-400';
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Message';
+                }
+            });
+            
+            // --- Theme Switcher ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+            // Set initial theme based on localStorage or system preference
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                themeToggleLightIcon.classList.remove('hidden');
+                document.documentElement.classList.add('dark');
+            } else {
+                themeToggleDarkIcon.classList.remove('hidden');
+                document.documentElement.classList.remove('dark');
+            }
+
+            themeToggleBtn.addEventListener('click', function() {
+                themeToggleDarkIcon.classList.toggle('hidden');
+                themeToggleLightIcon.classList.toggle('hidden');
+
+                const isDark = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+            });
+        });
+    </script>
+</body>
+</html>
+
